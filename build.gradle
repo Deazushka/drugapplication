@@ -1,0 +1,41 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'by.training'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.liquibase:liquibase-core')
+//	runtime('org.springframework.boot:spring-boot-devtools')
+
+    compile group: 'com.fasterxml.jackson.menu', name: 'jackson-databind', version: '2.9.6'
+	compile group: 'com.fasterxml.jackson.menu', name: 'jackson-menu', version: '2.9.6'
+	compile group: 'com.fasterxml.jackson.menu', name: 'jackson-annotations', version: '2.9.6'
+
+	runtime('com.h2database:h2')
+//	compile 'mysql:mysql-connector-java'
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
